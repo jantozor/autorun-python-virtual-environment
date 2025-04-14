@@ -54,5 +54,14 @@
     "typescript": "^5.8.2",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/jantozor/autorun-python-virtual-environment/issues",
+    "email": "jantozor@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jantozor/autorun-python-virtual-environment.git"
   }
 }
