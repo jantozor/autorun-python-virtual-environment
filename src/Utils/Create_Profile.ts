@@ -4,7 +4,7 @@ import * as path from 'path';
 import { checkPython, createVirtualEnv } from './python_checker';
 
 
-export async function createTestFile(): Promise<boolean>  {
+export async function automatic_virtual_enviroment(envname: string): Promise<boolean>  {
     const hasPython = await checkPython();
     if (!hasPython) {
 		return false;
@@ -37,7 +37,7 @@ export async function createTestFile(): Promise<boolean>  {
 				"source": "Git Bash"
 			}
 		},
-		"terminal.integrated.defaultProfile.windows": "PowerShell customenv"
+		"terminal.integrated.defaultProfile.windows": "PowerShell customenv",
 	};
 
     const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -47,7 +47,7 @@ export async function createTestFile(): Promise<boolean>  {
 	}
 
 	const workspacePath = workspaceFolders[0].uri.fsPath;
-    const envFolderPath = path.join(workspacePath, 'env'); // You can change 'env' to another name
+    const envFolderPath = path.join(workspacePath, envname); // You can change 'env' to another name
 	const vscodeFolderPath = path.join(workspacePath, '.vscode');
 	const settingsFilePath = path.join(vscodeFolderPath, 'settings.json');
 	const powershellProfilePath = path.join(vscodeFolderPath, 'Microsoft.PowerShell_profile.ps1');
@@ -75,14 +75,17 @@ export async function createTestFile(): Promise<boolean>  {
 			return false;
 		}
 	}
+
+	settings["autorun-python-virtual-environment.runOnSave"] = false;
+
     // Merge settings deeply
 	settings["terminal.integrated.profiles.windows"] = {
 		...settings["terminal.integrated.profiles.windows"],
 		...newTerminalSettings["terminal.integrated.profiles.windows"]
 	};
-
 	settings["terminal.integrated.defaultProfile.windows"] =
 		newTerminalSettings["terminal.integrated.defaultProfile.windows"];
+	
 
 	// Write updated settings back to file
 	fs.writeFileSync(settingsFilePath, JSON.stringify(settings, null, 4));
