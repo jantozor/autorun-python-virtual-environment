@@ -2,14 +2,14 @@
   "name": "autorun-python-virtual-environment",
   "displayName": "Autorun-python-virtual-environment",
   "description": "This extensions only create an empty python environment and the corresponding settings to activate this environment each time the project folder is opened.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.99.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages","Snippets","Linters"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onLanguage:python"],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -17,7 +17,24 @@
         "command": "autorun-python-virtual-environment.Python_Virtual_Enviroment",
         "title": "Python Virtual Enviroment"
       }
-    ]
+    ],
+    "configuration":{
+      "title": "Autorun Python Virtual Environment Settings",
+      "type": "object",
+      "properties": {
+        "autorun-python-virtual-environment.runOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run virtual environment logic when saving a Python file."
+        },
+        "autorun-python-virtual-environment.venv": {
+          "type": "string",
+          "default": "env",
+          "description": "Relative path where the virtual environment will be created."
+        }
+      }
+
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

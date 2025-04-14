@@ -1,71 +1,41 @@
-# autorun-python-virtual-environment README
+# Autorun-python-virtual-environment README
 
-This is the README for your extension "autorun-python-virtual-environment". After writing up a brief description, we recommend including the following sections.
+**Autorun-python-virtual-environment** is a Visual Studio Code extension that automatically sets up a Python virtual environment for your project and configures the terminal to use it seamlessly. It's designed to help you bootstrap Python projects quickly without needing to manually create and activate a virtual environment.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- 📦 Automatically checks if Python is installed on your system.
+- 🔁 Automatically closes all open terminals and opens a new one with the virtual environment activated.
+- 🛠️ Creates a virtual environment in a folder of your choice (default: `/env`).
+- 📝 Automatically generates a `.vscode/Microsoft.PowerShell_profile.ps1` script with activation logic.
+- 🧠 Smart detection of existing `.vscode/settings.json` and merges required terminal profile configuration.
+- ⚙️ Sets up a custom PowerShell profile for Windows terminals to auto-activate the virtual environment.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Python must be installed (`python` or `python3` should be available in your system PATH).
+- Works best with PowerShell on Windows.
+- VS Code 1.70 or higher.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+his extension contributes the following settings:
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+* `autorunPythonVirtualEnv.runOnSave`: Enable or disable automatic Python virtual environment creation.
+* `autorunPythonVirtualEnv.env`: Set the relative folder path for the virtual environment (default: `"env"`).
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- Currently optimized for PowerShell terminals on Windows. Unix shell support (e.g., bash/zsh) is in progress.
+- May conflict with existing PowerShell profiles if heavily customized.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+- Initial release of `autorun-python-virtual-environment`.
+- Auto-detection of Python.
+- Auto-creation of virtual environment.
+- PowerShell profile configuration and terminal integration.
 
 ---
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
